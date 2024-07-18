@@ -387,16 +387,6 @@ def main():
             end_time = time.time()
             print(f"Encoding data took {end_time - start_time:.2f} seconds.")
 
-            # print(f"\nTraining and evaluating CNN on original data for {chr_name} {start}-{end}...")
-            # original_accuracy, original_precision, original_recall, original_auc, cnn_original = train_evaluate_cnn(
-            #     X_train, X_val, X_test, y_train, y_val, y_test,
-            #     log_dir_name=f"original_{chr_name}_{start}_{end}",
-            #     batch_size=16,
-            #     lr=0.0001,
-            #     l2_reg=0.001,
-            #     use_early_stopping=False
-            # )
-
             print(f"\nTraining and evaluating CNN on encoded data for {chr_name} {start}-{end}...")
             encoded_accuracy, encoded_precision, encoded_recall, encoded_auc, cnn_encoded = train_evaluate_cnn(
                 torch.tensor(X_train_encoded).to(device), torch.tensor(X_val_encoded).to(device), torch.tensor(X_test_encoded).to(device), y_train, y_val, y_test,
